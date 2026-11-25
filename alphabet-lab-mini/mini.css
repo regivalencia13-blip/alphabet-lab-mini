@@ -1,0 +1,37 @@
+:root{--pad:clamp(24px,4.8vw,48px);--ink:#72a6bc}body{touch-action:manipulation;-webkit-user-select:none;user-select:none}header{z-index:2;top:max(var(--pad),env(safe-area-inset-top));left:max(var(--pad),env(safe-area-inset-left))}header p{font-size:10px;margin-bottom:14px}nav{gap:12px}nav button{width:54px;height:54px;touch-action:manipulation}nav button .specimen-logo{width:36px;height:36px}#bacteria-types{gap:8px;margin-top:16px}#bacteria-types button{width:44px;height:44px;font-size:12px}#bacteria-types[hidden]{display:none}.identity{position:absolute;right:var(--pad);top:max(var(--pad),env(safe-area-inset-top));text-align:right;letter-spacing:.12em;font-size:10px;line-height:1.7;color:#d5dad3}.identity span{color:#868b86;font-size:9px}footer{bottom:max(var(--pad),env(safe-area-inset-bottom));padding-bottom:20px;align-items:flex-end;pointer-events:none}footer p{margin:0;font-size:11px;letter-spacing:.09em}footer #live-status{margin-top:8px;font-size:9px;color:#868b86}.counter{color:#868b86;font-size:12px;font-variant-numeric:tabular-nums;letter-spacing:.08em}.counter span{color:var(--ink)}.progress{position:absolute;bottom:0;height:1px;left:0;right:0;background:#292f2a}.progress i{display:block;height:100%;width:100%;background:var(--ink);transform-origin:left;transform:scaleX(0)}button:active{transform:scale(.94)}@media(max-width:540px){.identity{top:auto;bottom:calc(max(var(--pad),env(safe-area-inset-bottom)) + 84px);font-size:9px}nav{gap:10px}nav button{width:48px;height:48px}}
+/* Two bounded media slots: current video and the next specimen. */
+#video-stage{position:absolute;inset:0;pointer-events:none;z-index:-1}
+#video-stage video{position:absolute;left:6%;top:16%;width:88%;height:68%;object-fit:contain;opacity:0;transition:opacity .15s;background:#0c0e0d}
+#video-stage video.visible{opacity:1}
+#start-playback{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:18px 26px;background:var(--ink);color:#0c0e0d;border-radius:4px;letter-spacing:.08em;z-index:3}
+#start-playback[hidden]{display:none}
+/* Portrait display: compact controls above a dedicated, larger alphabet area. */
+:root{--pad:clamp(24px,3.8vw,36px);--stage-gap:clamp(18px,2vh,26px)}
+main{display:grid;grid-template-rows:120px minmax(0,1fr) auto;gap:var(--stage-gap);padding:max(var(--pad),env(safe-area-inset-top)) max(var(--pad),env(safe-area-inset-right)) max(var(--pad),env(safe-area-inset-bottom)) max(var(--pad),env(safe-area-inset-left))}
+header{position:relative;left:auto;top:auto;grid-row:1;align-self:start}
+header p{font-size:9px;margin:0 0 10px;line-height:14px;letter-spacing:.08em}
+nav{gap:8px}
+nav button{width:44px;height:44px}
+nav button .specimen-logo{width:28px;height:28px}
+#bacteria-types{margin-top:8px;gap:6px}
+#bacteria-types span{font-size:8px}
+#bacteria-types button{width:44px;height:44px;font-size:10px}
+.identity{font-size:9px;line-height:1.6}
+.identity span{font-size:8px}
+#video-stage{position:relative;inset:auto;grid-row:2;min-width:0;min-height:0;width:100%;height:100%;z-index:0}
+#video-stage video{left:0;top:0;width:100%;height:100%;object-fit:contain}
+footer{position:relative;left:auto;right:auto;bottom:auto;grid-row:3;padding:0 0 9px;gap:12px;min-height:35px}
+footer p{font-size:9px;line-height:13px;letter-spacing:.07em}
+footer #live-status{font-size:8px;line-height:11px;margin-top:2px;min-height:11px}
+.counter{font-size:10px;letter-spacing:.06em}
+@media(max-width:540px){
+ .identity{top:max(var(--pad),env(safe-area-inset-top));bottom:auto;font-size:8px;max-width:76px}
+ nav{gap:6px}
+ nav button{width:44px;height:44px}
+}
+/* Small subtype badges, with transparent padding for comfortable touch targets. */
+#bacteria-types{gap:0;margin-top:4px}
+#bacteria-types button{position:relative;isolation:isolate;width:44px;height:44px;border:0;background:transparent!important;color:#a0a8ac;font-size:9px;line-height:1;padding:0}
+#bacteria-types button::before{content:'';position:absolute;inset:9px;border:1px solid #353e42;border-radius:3px;z-index:-1}
+#bacteria-types button[aria-pressed=true]{color:#0c0e0d}
+#bacteria-types button[aria-pressed=true]::before{background:var(--ink);border-color:var(--ink)}

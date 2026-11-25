@@ -1,0 +1,31 @@
+:root{color-scheme:dark;--ink:#a5b89a;--muted:#868b86;--pad:clamp(24px,3.2vw,64px)}*{box-sizing:border-box}html,body,main{margin:0;width:100%;height:100%;overflow:hidden}body{background:#0c0e0d;color:#e4e7e2;font:12px/1.4 Arial,sans-serif}main{position:relative;isolation:isolate;height:100dvh}#stage{position:absolute;inset:0;width:100%;height:100%;z-index:-1}header{position:absolute;left:var(--pad);top:var(--pad)}h1{font-size:14px;font-weight:500;letter-spacing:.1em;margin:0 0 18px}header p,aside p,footer label,.edition,#text-hint{font-size:10px;letter-spacing:.08em;color:var(--muted)}header p{margin:0 0 12px}nav{display:flex;gap:10px}button{font:inherit;cursor:pointer;border:0;color:inherit}nav button{width:54px;height:54px;display:grid;place-items:center;border-radius:50%;background:#242925;transition:background .2s,color .2s}nav button[aria-pressed=true]{background:var(--ink);color:#0c0e0d}svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.edition{position:absolute;right:var(--pad);top:var(--pad)}aside{position:absolute;right:var(--pad);top:50%;transform:translateY(-50%);width:180px;border-top:1px solid #3d423e;padding-top:12px}aside p{margin:0 0 20px}aside label{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.06em}output{font-variant-numeric:tabular-nums}input[type=range]{width:100%;margin:15px 0 28px;accent-color:var(--ink);height:3px;cursor:pointer}#live-status{font-size:9px;margin:0;color:var(--muted);min-height:13px}footer{position:absolute;bottom:var(--pad);left:var(--pad);right:var(--pad);display:flex;align-items:center;gap:30px;border-top:1px solid #3d423e;padding-top:22px}.text-control{flex:1;min-width:0;position:relative}footer label{display:block;margin-bottom:10px}input[type=text],#text{width:100%;border:0;border-bottom:1px solid #a2a8a0;border-radius:0;background:transparent;color:#e4e7e2;font:22px Arial,sans-serif;padding:0 0 9px;text-transform:uppercase;outline-offset:5px}#text-hint{position:absolute;right:0;top:0;font-size:9px}#print{background:var(--ink);color:#111611;border-radius:5px;padding:18px 24px;display:flex;gap:12px;align-items:center;font-size:15px}#print svg{width:22px;height:22px}button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:5px}#engines{position:fixed;left:-10000px;top:0;width:1px;height:1px;overflow:hidden}#print-image{display:none}@media(max-width:900px){aside{width:120px}nav button{width:42px;height:42px}.edition{font-size:8px}#text-hint{display:none}footer{gap:16px}}
+
+/* Compact lower input; keep the print control at the far edge. */
+aside{width:clamp(124px,9.4vw,180px)}
+footer{border-top:0;padding-top:0;justify-content:space-between;align-items:flex-end}
+.text-control{flex:0 1 560px;max-width:52%;}
+#text{font-size:28px;padding-bottom:7px}
+#text-hint{display:none}
+@media(max-width:900px){aside{width:120px}.text-control{max-width:64%}}
+#bacteria-types{display:flex;align-items:center;gap:6px;margin-top:14px;padding-left:128px}#bacteria-types[hidden]{display:none}#bacteria-types span{font-size:9px;letter-spacing:.1em;color:var(--muted);margin-right:4px}#bacteria-types button{width:30px;height:28px;border:1px solid #353e42;border-radius:3px;background:transparent;color:#a0a8ac;font-size:11px}#bacteria-types button[aria-pressed=true]{border-color:var(--ink);background:var(--ink);color:#0c0e0d}@media(max-width:900px){#bacteria-types{padding-left:104px}}
+
+/* Screen and receipt use independent palettes and physical dimensions. */
+#receipt{display:none}
+@media print{
+ @page{size:auto;margin:3mm}
+ :root{color-scheme:light}
+ html,body{width:auto;height:auto;overflow:visible;background:#fff!important;color:#000!important}
+ body>main{display:none!important}
+ #receipt{display:block!important;width:100%;max-width:72mm;margin:0;padding:2mm 0;background:#fff;color:#000;font:8pt/1.4 monospace;break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ .receipt-heading{font-size:11pt;font-weight:bold;letter-spacing:.06em;border-bottom:1px dashed #000;padding-bottom:2mm}
+ #receipt-specimen{font-size:7pt;margin:2mm 0 4mm}
+ #receipt #print-image{display:block!important;width:100%;height:auto;max-height:32mm;object-fit:contain;margin:0 0 4mm}
+ .receipt-footer{border-top:1px dashed #000;padding-top:2mm;display:flex;justify-content:space-between;gap:3mm;font-size:6pt}
+ #receipt-word{overflow-wrap:anywhere}
+}
+
+#refresh{display:flex;gap:8px;align-items:center;background:transparent;border:1px solid #353e38;border-radius:3px;color:#a5aba5;font-size:10px;letter-spacing:.08em;padding:8px 12px;margin:0 0 16px}#refresh span{font-size:18px;line-height:1}#refresh:hover{color:var(--ink);border-color:var(--ink)}
+
+nav button .specimen-logo{width:36px;height:36px;stroke:none;fill:none}nav button[aria-pressed=true] .specimen-logo{filter:brightness(0)}#bacteria-types{padding-left:0}@media(max-width:900px){nav button .specimen-logo{width:29px;height:29px}#bacteria-types{padding-left:0}}
+
+#live-status{white-space:pre-line;line-height:1.7}
